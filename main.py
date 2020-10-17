@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from selenium import webdriver as wd
 from bs4 import BeautifulSoup
 import time
@@ -41,9 +43,12 @@ def crawl_youtube_page_html_source(url):
 
     css_selector = 'paper-button#button.style-scope.ytd-button-renderer'
     buttons = driver.find_elements_by_css_selector(css_selector)
-
+    
+    dapgle = u'답글'
+    bogi = u'보기'
+    
     for button in buttons:
-        if '답글' in button.text and '보기' in button.text:
+        if dapgle in button.text and bogi in button.text:
             driver.execute_script("arguments[0].scrollIntoView();", button)
             driver.execute_script("arguments[0].click();", button)
             time.sleep(2.0)
@@ -125,6 +130,7 @@ def print_statistics(file,stats):
 
 url = 'https://www.youtube.com/watch?v=JyrFhfjwfDo&ab_channel=tvN'
 #url = 'https://www.youtube.com/watch?v=0UKwpJUUDlM&ab_channel=essential%3B' #Avengers 명장면
+url = 'https://www.youtube.com/watch?v=a-3tU8r7rMw'
 
 if __name__=="__main__":
 
