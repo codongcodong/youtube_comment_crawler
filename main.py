@@ -19,15 +19,15 @@ def crawl_youtube_page_html_source(url):
 
     while True:
         driver.execute_script("window.scrollTo(0, document.documentElement.scrollHeight);")
-        time.sleep(5.0)
+        time.sleep(4.0)
         new_page_height = driver.execute_script("return document.documentElement.scrollHeight")
 
         if new_page_height == last_page_height:
-            time.sleep(5.0)    #giving second chance in case of slow page load
+            time.sleep(4.0)    #giving second chance in case of slow page load
             new_page_height = driver.execute_script("return document.documentElement.scrollHeight")
 
             if new_page_height == last_page_height:
-                time.sleep(5.0)  # giving thrid chance in case of slow page load
+                time.sleep(4.0)  # giving thrid chance in case of slow page load
                 new_page_height = driver.execute_script("return document.documentElement.scrollHeight")
 
                 if new_page_height == last_page_height:
@@ -123,10 +123,8 @@ def print_statistics(file,stats):
         else:
             file.write("%d:%02d:%02d - %d\n"%(time_value // 3600, (time_value % 3600) // 60, time_value % 60, stats[time_value]))
 
-#url = 'https://youtu.be/a-3tU8r7rMw'
 url = 'https://www.youtube.com/watch?v=JyrFhfjwfDo&ab_channel=tvN'
-#url = 'https://www.youtube.com/watch?v=xKf0soeFJtY'
-#url = 'https://www.youtube.com/watch?v=0UKwpJUUDlM&ab_channel=essential%3B'
+#url = 'https://www.youtube.com/watch?v=0UKwpJUUDlM&ab_channel=essential%3B' #Avengers 명장면
 
 if __name__=="__main__":
 
