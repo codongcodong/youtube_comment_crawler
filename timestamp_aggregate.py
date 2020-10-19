@@ -1,9 +1,11 @@
 from collections import defaultdict
+import sys
 
-infile = open('url0.txt','r')
-outfile = open('ur0_aggregated.txt','w')
+filename = sys.argv[1]
+infile = open(filename,'r')
+outfile = open('%s_aggregated.txt'%filename.split('.')[0],'w')
 
-for i in range(2):
+for i in range(3):
     line = infile.readline()
     outfile.write(line)
 
