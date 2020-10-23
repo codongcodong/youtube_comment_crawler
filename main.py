@@ -54,10 +54,16 @@ def crawl_youtube_page_html_source(url):
     bogi = u'보기'
 
     for button in buttons:
-        if dapgle in button.text and bogi in button.text:
+        try:
+            driver.execute_script("arguments[0].scrollIntoView();", button)
+            button_text = button.text
+        except:
+            print("Error while getting button_text")
+            driver.quit()
+            return
+
+        if dapgle in button_text and bogi in button_text:
             try:
-                driver.execute_script("arguments[0].scrollIntoView();", button)
-                time.sleep(2.0)
                 driver.execute_script("arguments[0].click();", button)
             except:
                 print("Error while clicking buttons")
@@ -223,52 +229,102 @@ comedy3 = video_url(central_standup3,"We Need a Dress Code at the Airport - Seba
 comedy4 = video_url(central_standup4,"How Do 90% of Americans Have Jobs? - Daniel Tosh #C=7892","central_standup4")
 comedy5 = video_url(central_standup5,"Josh Johnson Had to Prove He Was Black to a Blind Man #C=7049","central_standup5")
 
+######################################################2차분석 대상#####################################################
+#Wimbledon 2019 - Highlights and Match Clips
+wimble1 = "https://www.youtube.com/watch?v=mnLdAeSXZv0&list=PLwx9gNibGUz6SzJb1zHdstIDrBBy1ZB0b&index=7&ab_channel=Wimbledon"
+wimble2 = "https://www.youtube.com/watch?v=TUikJi0Qhhw&list=PLwx9gNibGUz6SzJb1zHdstIDrBBy1ZB0b&index=2&ab_channel=Wimbledon"
+wimble3 = "https://www.youtube.com/watch?v=194cLdYnVF8&list=PLwx9gNibGUz6SzJb1zHdstIDrBBy1ZB0b&index=21&ab_channel=Wimbledon"
+wimble4 = "https://www.youtube.com/watch?v=VRzVd1OZoaQ&list=PLwx9gNibGUz6SzJb1zHdstIDrBBy1ZB0b&index=8&ab_channel=Wimbledon"
+wimble5 = "https://www.youtube.com/watch?v=J8__TwOgTY0&list=PLwx9gNibGUz6SzJb1zHdstIDrBBy1ZB0b&index=41&ab_channel=Wimbledon"
+
+tennis1 = video_url(wimble1,"Novak Djokovic vs Roger Federer Wimbledon 2019 final highlights #C 6576 11:09","wimble1")
+tennis2 = video_url(wimble2,"Novak Djokovic vs Roger Federer | Wimbledon 2019 | Full Match #C 5037 4:58:38","wimble2")
+tennis3 = video_url(wimble3,"Novak Djokovic is the 2019 Wimbledon gentlemen's singles champion #C 1811 1:10","wimble3")
+tennis4 = video_url(wimble4,"Simona Halep vs Serena Williams Wimbledon 2019 final highlights #C 1932 L: 5:35","wimble4")
+tennis5 = video_url(wimble5,"Roger Federer vs Rafael Nadal Wimbledon 2019 semi-final highlights #C 3544 8:24","wimble5")
 
 
-if __name__=="__main__":
+#2019 Game Recaps
+mlb1 = "https://www.youtube.com/watch?v=hjO1-YY8nbA&list=PLL-lmlkrmJamiSMOFET46BizlvPmI-95I&index=5&ab_channel=MLB"
+mlb2 = "https://www.youtube.com/watch?v=77jKOQVIH3Y&list=PLL-lmlkrmJamiSMOFET46BizlvPmI-95I&index=7&ab_channel=MLB"
+mlb3 = "https://www.youtube.com/watch?v=cTibRn5TLMo&list=PLL-lmlkrmJamiSMOFET46BizlvPmI-95I&index=18&ab_channel=MLB"
+mlb4 = "https://www.youtube.com/watch?v=K1JpV6ONsXw&list=PLL-lmlkrmJamiSMOFET46BizlvPmI-95I&index=1&ab_channel=MLB"
+mlb5 = "https://www.youtube.com/watch?v=6RmSsVZf15I&list=PLL-lmlkrmJamiSMOFET46BizlvPmI-95I&index=6&ab_channel=MLB"
 
+baseball1 = video_url(mlb1,"Nationals ride 6-run 7th to World Series Game 2 win | Nationals-Astros MLB Highlights #C 2156 9:51","mlb1")
+baseball2 = video_url(mlb2,"Jose Altuve's walk-off HR sends Astros to World Series in Game 6! | Yankees-Astros MLB Highlights #C 3367 6:53","mlb2")
+baseball3 = video_url(mlb3,"Howie Kendrick's grand slam lifts Nationals to NLCS over Dodgers | Nationals-Dodgers MLB Highlights #C 3459 7:53","mlb3")
+baseball4 = video_url(mlb4,"Nationals win 1st World Series with Game 7 comeback win! | Astros-Nationals MLB Highlights #C 4148 11:19","mlb4")
+baseball5 = video_url(mlb5,"Juan Soto homers, drives in 3 in Nats' World Series Game 1 win | Nationals-Astros MLB Highlights #C 1542 9:38","mlb5")
+
+
+#NBA's Nightly Full Game Recaps 2018-19
+
+nba1 = "https://www.youtube.com/watch?v=-LOluO9wJPc&list=PLlVlyGVtvuVkPjVoVoDG0sxbF0PYVvuTS&ab_channel=NBA"
+nba2 = "https://www.youtube.com/watch?v=WT9lw1Stru0&list=PLlVlyGVtvuVkPjVoVoDG0sxbF0PYVvuTS&index=2&ab_channel=NBA"
+nba3 = "https://www.youtube.com/watch?v=yOAyeJbjmS4&list=PLlVlyGVtvuVkPjVoVoDG0sxbF0PYVvuTS&index=3&ab_channel=NBA"
+nba4 = "https://www.youtube.com/watch?v=MfgY7qxEISA&list=PLlVlyGVtvuVkPjVoVoDG0sxbF0PYVvuTS&index=5&ab_channel=NBA"
+nba5 = "https://www.youtube.com/watch?v=16sOSdLoiOo&list=PLlVlyGVtvuVkPjVoVoDG0sxbF0PYVvuTS&index=6&ab_channel=NBA"
+
+basketball1 = video_url(nba1,"RAPTORS vs WARRIORS | Toronto Wins First NBA Championship! | NBA Finals Game 6 #C 4237 9:33","nba1")
+basketball2 = video_url(nba2,"WARRIORS vs RAPTORS | Unbelievable Finish at Scotiabank Arena | NBA Finals Game 5 #C 3499 9:39","nba2")
+basketball3 = video_url(nba3,"WARRIORS vs ROCKETS | Stephen Curry Drops 33 Points in the 2nd Half | Game 6 #C 2340 9:31","nba3")
+basketball4 = video_url(nba4,"WARRIORS vs RAPTORS | Toronto Grabs Franchise First Finals Win! | NBA Finals Game 1 #C 1678 9:36","nba4")
+basketball5 = video_url(nba5,"RAPTORS vs WARRIORS | Kawhi Leonard Drops 36 Points in Oracle | NBA Finals Game 4 #C 1772 9:34","nba5")
+
+
+#Movie(Real)
+#From Youtube Channel - Movieclips
+
+clips1 = "https://www.youtube.com/watch?v=K1R4hHq8yr4&ab_channel=Movieclips"
+clips2 = "https://www.youtube.com/watch?v=jM7Eou4bV-Q&ab_channel=Movieclips"
+clips3 = "https://www.youtube.com/watch?v=gAWrAQp7pWQ&ab_channel=Movieclips "
+clips4 = "https://www.youtube.com/watch?v=2bpkd6hwH6U&ab_channel=Movieclips"
+clips5 = "https://www.youtube.com/watch?v=yRhRZB-nqOU&ab_channel=Movieclips"
+
+real_movie1 = video_url(clips1, "Indiana Jones 4 (9/10) Movie CLIP - Giant Ants (2008) HD #C 14784 2:42", "clips1")
+real_movie2 = video_url(clips2, "Spider-Man Movie (2002) - Peter vs. Flash Scene (1/10) | Movieclips #C 7657 2:58", "clips2")
+real_movie3 = video_url(clips3, "The Scorpion King (2/9) Movie CLIP - Fire Ants (2002) HD #C 6614 3:06", "clips3")
+real_movie4 = video_url(clips4, "Now You See Me (2/11) Movie CLIP - The Piranha Tank (2013) HD #C 14566 2:23", "clips4")
+real_movie5 = video_url(clips5, "Spider-Man 2 - Stopping the Train Scene (7/10) | Movieclips #C 20184 4:22", "clips5")
+
+'''
     movies = [pixar2, pixar3]
     docus = [docu3, docu4, docu5]
     sports = [sport2,sport3,sport4,sport5]
     dramas = [drama2,drama3,drama4,drama5,drama6]
     comedies = [comedy2,comedy3,comedy4,comedy5]
+'''
 
-    videos = [bunny1,bunny1,bunny1, comedy1, comedy1, pixar1, pixar1, docu2, docu2]
-    for j in range(len(videos)):
-        video = videos[j]
-        
-        print("anaylzing %s" % video.filename)
-        output_file = open('%s__%d.txt' % (video.filename, j), 'w')
-        output_file.write('video info: ' + video.info + '\n')
-        output_file.write('url: ' + video.url + '\n')
+if __name__=="__main__":
 
-        html_source = crawl_youtube_page_html_source(video.url) 
-        if not html_source:
-            print("Skipping to next target video")
-            output_file.write("ERRRORROROROOROROROROOOR!!!!!!\n")
-            continue
+    tennis_list = [tennis1, tennis2, tennis3, tennis4, tennis5]
+    baseball_list = [baseball1, baseball2, baseball3, baseball4 ,baseball5]
+    basketball_list = [basketball1,basketball2, basketball3, basketball4, basketball5]
+    real_movie_list = [real_movie1, real_movie2, real_movie3, real_movie4, real_movie5]
 
-        timestamps_stats = get_timestamps(output_file, html_source)
-        print_statistics(output_file, timestamps_stats)
-
-        print("%s %dth analysis complete" % (video.filename, j))
-
-
-    videos = comedies + dramas + sports + docus + movies
+    video_lists = [real_movie_list, tennis_list, basketball_list, baseball_list]
+    
     for j in range(3):
-        for video in videos:
-            print("anaylzing %s"%video.filename)
-            output_file = open('%s-%d.txt'%(video.filename,j),'w')
-            output_file.write('video info: '+video.info+'\n')
-            output_file.write('url: '+video.url+'\n')
+        for target_list in video_lists:
+            for video in target_list:
+                
+                print("anaylzing %s"%video.filename)
+                output_file = open('%s-%d.txt'%(video.filename,j),'w',buffering=1)
+                output_file.write('video info: '+video.info+'\n')
+                output_file.write('url: '+video.url+'\n')
 
-            html_source = crawl_youtube_page_html_source(video.url)
-            if not html_source:
-                print("Skipping to next target video")
-                output_file.write("ERRRORROROROOROROROROOOR!!!!!!\n")
-                continue
+                html_source = crawl_youtube_page_html_source(video.url)
+                if not html_source:
+                    print("Skipping to next target video")
+                    output_file.write("ERRRORROROROOROROROROOOR!!!!!!\n")
+                    output_file.close()
+                    continue
 
-            timestamps_stats = get_timestamps(output_file,html_source)
-            print_statistics(output_file,timestamps_stats)
+                timestamps_stats = get_timestamps(output_file,html_source)
+                print_statistics(output_file,timestamps_stats)
 
-            print("%s %dth analysis complete"%(video.filename,j))
+                print("%s %dth analysis complete"%(video.filename,j))
+                output_file.close()
+                
+
